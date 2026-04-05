@@ -23,3 +23,12 @@ __pycache__/
 
 # env files
 .env
+
+# pretrained model weights
+models/pubmedbert-local/
+models/sapbert-local/
+models/biobert-local/
+models/minilm-local/
+*.safetensors
+*.bin
+*.pt
