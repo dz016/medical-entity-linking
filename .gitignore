@@ -32,3 +32,4 @@ models/minilm-local/
 *.safetensors
 *.bin
 *.pt
+models/*/weights/
