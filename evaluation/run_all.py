@@ -23,6 +23,7 @@ import json
 import argparse
 from pathlib import Path
 from datetime import date
+import sys
 
 import pandas as pd
 
@@ -68,19 +69,23 @@ def load_embedder(model_name: str):
         return embedder
 
     # ── team models — uncomment as they are pushed ──
+    elif model_name == 'word2vec':
+        sys.path.insert(0, str(ROOT / 'models' / 'word2vec'))
+        from model import Word2VecEmbedder
+        embedder = Word2VecEmbedder()
+        embedder.load(str(ROOT / 'models' / 'word2vec'))
+        return embedder
     
 
-    # elif model_name == 'word2vec':
-    #     from word2vec_embedder import Word2VecEmbedder
-    #     embedder = Word2VecEmbedder()
-    #     embedder.load(str(ROOT / 'models' / 'word2vec' / 'weights'))
-    #     return embedder
 
-    # elif model_name == 'word2vec_umls':
-    #     from word2vec_umls_embedder import Word2VecUMLSEmbedder
-    #     embedder = Word2VecUMLSEmbedder()
-    #     embedder.load(str(ROOT / 'models' / 'word2vec_umls' / 'weights'))
-    #     return embedder
+
+    elif model_name == 'word2vec_umls':
+        sys.path.insert(0, str(ROOT / 'models' / 'word2vec_umls'))
+        from model import Word2VecEmbedder
+        embedder = Word2VecEmbedder()
+        embedder.load(str(ROOT / 'models' / 'word2vec_umls'))
+        return embedder
+
 
     # elif model_name == 'transformer':
     #     from transformer_embedder import TransformerEmbedder

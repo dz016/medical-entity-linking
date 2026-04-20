@@ -1,0 +1,14 @@
+{
+  "model": "word2vec_umls",
+  "dataset": "ncbi",
+  "split": "test",
+  "acc@1": 0.23366834170854273,
+  "acc@5": 0.38316582914572866,
+  "acc@10": 0.4321608040201005,
+  "mrr": 0.29721474435670414,
+  "total_mentions": 796,
+  "found_in_top_k": 344,
+  "not_found": 452,
+  "runtime_sec": 0.65,
+  "date": "2026-04-20"
+}

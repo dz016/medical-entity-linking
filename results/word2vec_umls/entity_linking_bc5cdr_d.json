@@ -1,0 +1,14 @@
+{
+  "model": "word2vec_umls",
+  "dataset": "bc5cdr_d",
+  "split": "test",
+  "acc@1": 0.41716968477531857,
+  "acc@5": 0.6161412921976303,
+  "acc@10": 0.6767270288397049,
+  "mrr": 0.4983824463536066,
+  "total_mentions": 4473,
+  "found_in_top_k": 3027,
+  "not_found": 1446,
+  "runtime_sec": 3.22,
+  "date": "2026-04-20"
+}

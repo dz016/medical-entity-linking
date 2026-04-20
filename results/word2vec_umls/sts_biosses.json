@@ -1,0 +1,12 @@
+{
+  "model": "word2vec_umls",
+  "dataset": "biosses",
+  "split": "test",
+  "pearson_r": 0.4667,
+  "pearson_p": 0.038,
+  "spearman_r": 0.5492,
+  "spearman_p": 0.0121,
+  "num_pairs": 20,
+  "runtime_sec": 0.0,
+  "date": "2026-04-20"
+}
