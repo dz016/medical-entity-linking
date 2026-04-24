@@ -1,0 +1,19 @@
+{
+  "model": "word2vec_umls_enhanced",
+  "dataset": "nli4ct",
+  "classifier": "MLP(512,128)",
+  "accuracy": 0.534,
+  "majority_baseline": 0.579,
+  "improvement": -0.045,
+  "per_class_f1": {
+    "Contradiction": 0.6819,
+    "Entailment": 0.1293
+  },
+  "macro_f1": 0.4056,
+  "num_train": 3466,
+  "num_test": 867,
+  "embedding_dim": 256,
+  "feature_dim": 1024,
+  "runtime_sec": 1.56,
+  "date": "2026-04-24"
+}

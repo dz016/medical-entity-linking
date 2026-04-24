@@ -1,0 +1,185 @@
+
+============================================================
+  model : transformer_fast
+  task  : all
+============================================================
+
+
+--- entity linking: NCBI ---
+NCBI test: 796 mentions loaded
+loaded KB: 13320 entries from CTD_diseases.tsv
+
+embedding KB (13320 terms)...
+KB embedded in 0.9s — shape: (13320, 128)
+
+embedding 796 mentions...
+mentions embedded in 0.0s
+
+computing similarities and ranks...
+ranking:   0%|          | 0/4 [00:00<?, ?it/s]ranking:  25%|██▌       | 1/4 [00:00<00:00,  5.27it/s]ranking:  50%|█████     | 2/4 [00:00<00:00,  5.32it/s]ranking:  75%|███████▌  | 3/4 [00:00<00:00,  5.34it/s]ranking: 100%|██████████| 4/4 [00:00<00:00,  6.83it/s]
+ranking done in 0.6s
+
+==================================================
+  model   : transformer_fast
+  dataset : ncbi
+  split   : test
+  Acc@1   : 0.1482
+  Acc@5   : 0.1595
+  Acc@10  : 0.2249
+  MRR     : 0.1622
+  runtime : 1.55s
+==================================================
+
+results saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/entity_linking_ncbi.json
+figure saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/figures/ncbi_results.png
+
+--- entity linking: BC5CDR-d ---
+BC5CDR-d test: 4473 mentions loaded
+loaded KB: 13320 entries from CTD_diseases.tsv
+
+embedding KB (13320 terms)...
+KB embedded in 0.6s — shape: (13320, 128)
+
+embedding 4473 mentions...
+mentions embedded in 0.1s
+
+computing similarities and ranks...
+ranking:   0%|          | 0/18 [00:00<?, ?it/s]ranking:   6%|▌         | 1/18 [00:00<00:03,  5.39it/s]ranking:  11%|█         | 2/18 [00:00<00:02,  5.34it/s]ranking:  17%|█▋        | 3/18 [00:00<00:02,  5.34it/s]ranking:  22%|██▏       | 4/18 [00:00<00:02,  5.35it/s]ranking:  28%|██▊       | 5/18 [00:00<00:02,  5.37it/s]ranking:  33%|███▎      | 6/18 [00:01<00:02,  5.39it/s]ranking:  39%|███▉      | 7/18 [00:01<00:02,  5.40it/s]ranking:  44%|████▍     | 8/18 [00:01<00:01,  5.39it/s]ranking:  50%|█████     | 9/18 [00:01<00:01,  5.37it/s]ranking:  56%|█████▌    | 10/18 [00:01<00:01,  5.32it/s]ranking:  61%|██████    | 11/18 [00:02<00:01,  5.30it/s]ranking:  67%|██████▋   | 12/18 [00:02<00:01,  5.32it/s]ranking:  72%|███████▏  | 13/18 [00:02<00:00,  5.34it/s]ranking:  78%|███████▊  | 14/18 [00:02<00:00,  5.37it/s]ranking:  83%|████████▎ | 15/18 [00:02<00:00,  5.39it/s]ranking:  89%|████████▉ | 16/18 [00:02<00:00,  5.41it/s]ranking:  94%|█████████▍| 17/18 [00:03<00:00,  5.43it/s]ranking: 100%|██████████| 18/18 [00:03<00:00,  5.54it/s]
+ranking done in 3.2s
+
+==================================================
+  model   : transformer_fast
+  dataset : bc5cdr_d
+  split   : test
+  Acc@1   : 0.3689
+  Acc@5   : 0.3818
+  Acc@10  : 0.3924
+  MRR     : 0.3752
+  runtime : 3.99s
+==================================================
+
+results saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/entity_linking_bc5cdr_d.json
+figure saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/figures/bc5cdr_d_results.png
+
+--- entity linking: BC5CDR-c ---
+BC5CDR-c test: 5364 mentions loaded
+loaded KB: 9128 entries from CTD_chemicals.tsv
+
+embedding KB (9128 terms)...
+KB embedded in 0.2s — shape: (9128, 128)
+
+embedding 5364 mentions...
+mentions embedded in 0.1s
+
+computing similarities and ranks...
+ranking:   0%|          | 0/21 [00:00<?, ?it/s]ranking:  19%|█▉        | 4/21 [00:00<00:00, 39.13it/s]ranking:  38%|███▊      | 8/21 [00:00<00:00, 39.41it/s]ranking:  57%|█████▋    | 12/21 [00:00<00:00, 39.52it/s]ranking:  76%|███████▌  | 16/21 [00:00<00:00, 39.55it/s]ranking:  95%|█████████▌| 20/21 [00:00<00:00, 39.56it/s]ranking: 100%|██████████| 21/21 [00:00<00:00, 39.58it/s]
+ranking done in 0.5s
+
+==================================================
+  model   : transformer_fast
+  dataset : bc5cdr_c
+  split   : test
+  Acc@1   : 0.0000
+  Acc@5   : 0.0000
+  Acc@10  : 0.0000
+  MRR     : 0.0000
+  runtime : 0.86s
+==================================================
+
+results saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/entity_linking_bc5cdr_c.json
+figure saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/figures/bc5cdr_c_results.png
+
+--- STS: BIOSSES ---
+BIOSSES test: 20 pairs loaded
+
+encoding sentence 1...
+encoding sentence 2...
+encoded 40 sentences in 0.0s
+embedding shape: (20, 128)
+
+==================================================
+  model      : transformer_fast
+  dataset    : biosses
+  split      : test
+  Pearson r  : 0.1922
+  Spearman r : 0.1793
+  runtime    : 0.0s
+==================================================
+
+results saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/sts_biosses.json
+figure saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/figures/biosses_results.png
+
+--- NLI: NLI4CT ---
+NLI4CT train: 4333 examples loaded
+label distribution:
+label
+Contradiction    2508
+Entailment       1825
+
+train: 3466  test: 867
+
+encoding train sentences...
+encoding test sentences...
+encoded in 0.9s — embedding dim: 128
+
+feature shape : (3466, 512)
+classes       : ['Contradiction' 'Entailment']
+
+training MLP classifier...
+trained in 0.4s
+
+==================================================
+  model            : transformer_fast
+  dataset          : nli4ct
+  classifier       : MLP(512,128)
+  accuracy         : 0.5548
+  majority baseline: 0.5790
+  improvement      : -0.0242
+  macro F1         : 0.5097
+  per class F1:
+    Contradiction       : 0.6584
+    Entailment          : 0.3609
+  embedding dim    : 128
+  feature dim      : 512
+  runtime          : 1.26s
+==================================================
+
+results saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/nli_nli4ct.json
+figure saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/transformer_fast/figures/nli4ct_results.png
+
+--- building leaderboard ---
+
+leaderboard saved to /Users/dawoodzargar/Desktop/study/projects/medical-entity-linking/results/leaderboard.csv
+                 model                    task       date  accuracy  macro_f1  majority_baseline    acc@1    acc@5      mrr  pearson_r  spearman_r
+            pubmedbert entity_linking_bc5cdr_c 2026-04-04       NaN       NaN                NaN 0.000000 0.000000 0.000000        NaN         NaN
+               sapbert entity_linking_bc5cdr_c 2026-04-05       NaN       NaN                NaN 0.000000 0.000000 0.000000        NaN         NaN
+      transformer_fast entity_linking_bc5cdr_c 2026-04-24       NaN       NaN                NaN 0.000000 0.000000 0.000000        NaN         NaN
+              word2vec entity_linking_bc5cdr_c 2026-04-24       NaN       NaN                NaN 0.000000 0.000000 0.000000        NaN         NaN
+         word2vec_umls entity_linking_bc5cdr_c 2026-04-24       NaN       NaN                NaN 0.000000 0.000000 0.000000        NaN         NaN
+word2vec_umls_enhanced entity_linking_bc5cdr_c 2026-04-24       NaN       NaN                NaN 0.000000 0.000000 0.000000        NaN         NaN
+            pubmedbert entity_linking_bc5cdr_d 2026-04-04       NaN       NaN                NaN 0.450034 0.522021 0.483268        NaN         NaN
+               sapbert entity_linking_bc5cdr_d 2026-04-05       NaN       NaN                NaN 0.720993 0.860496 0.780100        NaN         NaN
+      transformer_fast entity_linking_bc5cdr_d 2026-04-24       NaN       NaN                NaN 0.368880 0.381847 0.375248        NaN         NaN
+              word2vec entity_linking_bc5cdr_d 2026-04-24       NaN       NaN                NaN 0.463224 0.627096 0.531677        NaN         NaN
+         word2vec_umls entity_linking_bc5cdr_d 2026-04-24       NaN       NaN                NaN 0.424994 0.631344 0.519824        NaN         NaN
+word2vec_umls_enhanced entity_linking_bc5cdr_d 2026-04-24       NaN       NaN                NaN 0.427677 0.609882 0.511509        NaN         NaN
+            pubmedbert     entity_linking_ncbi 2026-04-04       NaN       NaN                NaN 0.287688 0.336683 0.314659        NaN         NaN
+               sapbert     entity_linking_ncbi 2026-04-05       NaN       NaN                NaN 0.606784 0.729899 0.663895        NaN         NaN
+      transformer_fast     entity_linking_ncbi 2026-04-24       NaN       NaN                NaN 0.148241 0.159548 0.162179        NaN         NaN
+              word2vec     entity_linking_ncbi 2026-04-24       NaN       NaN                NaN 0.283920 0.415829 0.340767        NaN         NaN
+         word2vec_umls     entity_linking_ncbi 2026-04-24       NaN       NaN                NaN 0.312814 0.452261 0.374031        NaN         NaN
+word2vec_umls_enhanced     entity_linking_ncbi 2026-04-24       NaN       NaN                NaN 0.297739 0.443467 0.358098        NaN         NaN
+            pubmedbert              nli_nli4ct 2026-04-05    0.4694    0.4537              0.579      NaN      NaN      NaN        NaN         NaN
+               sapbert              nli_nli4ct 2026-04-20    0.5617    0.5480              0.579      NaN      NaN      NaN        NaN         NaN
+      transformer_fast              nli_nli4ct 2026-04-24    0.5548    0.5097              0.579      NaN      NaN      NaN        NaN         NaN
+              word2vec              nli_nli4ct 2026-04-24    0.4925    0.4508              0.579      NaN      NaN      NaN        NaN         NaN
+         word2vec_umls              nli_nli4ct 2026-04-24    0.5225    0.4818              0.579      NaN      NaN      NaN        NaN         NaN
+word2vec_umls_enhanced              nli_nli4ct 2026-04-24    0.5340    0.4056              0.579      NaN      NaN      NaN        NaN         NaN
+            pubmedbert             sts_biosses 2026-04-05       NaN       NaN                NaN      NaN      NaN      NaN     0.5438      0.5499
+               sapbert             sts_biosses 2026-04-05       NaN       NaN                NaN      NaN      NaN      NaN     0.8826      0.8752
+      transformer_fast             sts_biosses 2026-04-24       NaN       NaN                NaN      NaN      NaN      NaN     0.1922      0.1793
+              word2vec             sts_biosses 2026-04-24       NaN       NaN                NaN      NaN      NaN      NaN     0.6043      0.6195
+         word2vec_umls             sts_biosses 2026-04-24       NaN       NaN                NaN      NaN      NaN      NaN     0.6396      0.6271
+word2vec_umls_enhanced             sts_biosses 2026-04-24       NaN       NaN                NaN      NaN      NaN      NaN     0.7062      0.7345
+
+done. all results saved to results/transformer_fast/

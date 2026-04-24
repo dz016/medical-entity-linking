@@ -1,0 +1,6 @@
+{
+  "model_name": "word2vec",
+  "model_type": "word2vec",
+  "vector_dim": 300,
+  "pooling": "mean"
+}

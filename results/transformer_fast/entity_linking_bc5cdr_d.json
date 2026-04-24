@@ -1,0 +1,14 @@
+{
+  "model": "transformer_fast",
+  "dataset": "bc5cdr_d",
+  "split": "test",
+  "acc@1": 0.3688799463447351,
+  "acc@5": 0.38184663536776214,
+  "acc@10": 0.39235412474849096,
+  "mrr": 0.37524840400427256,
+  "total_mentions": 4473,
+  "found_in_top_k": 1755,
+  "not_found": 2718,
+  "runtime_sec": 3.99,
+  "date": "2026-04-24"
+}

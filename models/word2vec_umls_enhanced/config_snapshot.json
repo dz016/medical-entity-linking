@@ -1,0 +1,41 @@
+{
+  "run_name": "word2vec_umls_enhanced",
+  "seed": 42,
+  "data": {
+    "pairs_txt": "embedding_training_v2/data/umls_pairs.txt",
+    "umls_mrconso": "META/MRCONSO.RRF",
+    "umls_mrsty": "META/MRSTY.RRF",
+    "umls_mrrel": "META/MRREL.RRF",
+    "cui_to_type_json": "embedding_training_v2/data/cui_to_type.json",
+    "relation_pairs_json": "embedding_training_v2/data/relation_pairs.json"
+  },
+  "trainer": {
+    "epochs": 10,
+    "batch_size": 512,
+    "lr": 0.0003,
+    "checkpoint_every": 1,
+    "resume": false
+  },
+  "alignment": {
+    "base_model_type": "word2vec",
+    "base_model_dir": "embedding_training_v2/outputs/models/word2vec",
+    "temperature": 0.07,
+    "projection_dim": 256,
+    "freeze_base": true,
+    "save_projected_inference": true
+  },
+  "enhanced": {
+    "max_types": 25,
+    "type_loss_weight": 0.1,
+    "type_loss_warmup": true,
+    "relation_sampling_ratio": 0.3,
+    "relation_types": [
+      "has_manifestation",
+      "may_treat",
+      "finding_site_of"
+    ]
+  },
+  "output": {
+    "root": "embedding_training_v2/outputs/models/word2vec_umls_enhanced"
+  }
+}

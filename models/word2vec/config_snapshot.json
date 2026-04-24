@@ -1,0 +1,35 @@
+{
+  "run_name": "word2vec",
+  "seed": 42,
+  "data": {
+    "pubmed_dir": "data/pubmed",
+    "umls_mrconso": "META/MRCONSO.RRF",
+    "tokenized_corpus": "embedding_training_v2/data/pubmed_tokenized.jsonl",
+    "vocab_json": "embedding_training_v2/data/vocab.json",
+    "pairs_txt": "embedding_training_v2/data/umls_pairs.txt",
+    "max_sentences": null
+  },
+  "preprocessing": {
+    "min_token_length": 2,
+    "max_vocab_size": 250000,
+    "min_freq": 2,
+    "max_pairs_per_cui": 10,
+    "language": "ENG"
+  },
+  "trainer": {
+    "workers": 12,
+    "epochs": 5,
+    "checkpoint_every": 1,
+    "resume": false
+  },
+  "model": {
+    "vector_size": 300,
+    "window": 5,
+    "min_count": 5,
+    "negative": 10,
+    "sg": 1
+  },
+  "output": {
+    "root": "embedding_training_v2/outputs/models/word2vec"
+  }
+}

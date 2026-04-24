@@ -1,0 +1,14 @@
+{
+  "model": "transformer_fast",
+  "dataset": "ncbi",
+  "split": "test",
+  "acc@1": 0.14824120603015076,
+  "acc@5": 0.15954773869346733,
+  "acc@10": 0.22487437185929648,
+  "mrr": 0.162178950307091,
+  "total_mentions": 796,
+  "found_in_top_k": 179,
+  "not_found": 617,
+  "runtime_sec": 1.55,
+  "date": "2026-04-24"
+}

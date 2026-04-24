@@ -1,0 +1,12 @@
+{
+  "model": "transformer_fast",
+  "dataset": "biosses",
+  "split": "test",
+  "pearson_r": 0.1922,
+  "pearson_p": 0.417,
+  "spearman_r": 0.1793,
+  "spearman_p": 0.4495,
+  "num_pairs": 20,
+  "runtime_sec": 0.0,
+  "date": "2026-04-24"
+}

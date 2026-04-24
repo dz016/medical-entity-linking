@@ -1,0 +1,14 @@
+{
+  "model": "transformer_umls_enhanced",
+  "dataset": "ncbi",
+  "split": "test",
+  "acc@1": 0.3015075376884422,
+  "acc@5": 0.44472361809045224,
+  "acc@10": 0.5113065326633166,
+  "mrr": 0.3667638789184015,
+  "total_mentions": 796,
+  "found_in_top_k": 407,
+  "not_found": 389,
+  "runtime_sec": 1.56,
+  "date": "2026-04-24"
+}

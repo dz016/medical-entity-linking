@@ -1,0 +1,36 @@
+{
+  "run_name": "transformer_fast",
+  "seed": 42,
+  "data": {
+    "pubmed_dir": "data/pubmed",
+    "tokenized_corpus": "embedding_training_v2/data/pubmed_tokenized_200k.jsonl",
+    "vocab_json": "embedding_training_v2/data/vocab.json",
+    "max_sentences": 200000
+  },
+  "preprocessing": {
+    "min_token_length": 2,
+    "max_vocab_size": 50000,
+    "min_freq": 2
+  },
+  "trainer": {
+    "epochs": 10,
+    "batch_size": 256,
+    "lr": 0.0005,
+    "num_threads": 8,
+    "checkpoint_every": 1,
+    "resume": false
+  },
+  "model": {
+    "hidden_size": 128,
+    "num_layers": 2,
+    "num_heads": 4,
+    "ffn_dim": 256,
+    "dropout": 0.1,
+    "max_length": 32,
+    "pooling": "cls",
+    "mask_probability": 0.15
+  },
+  "output": {
+    "root": "embedding_training_v2/outputs/models/transformer_fast"
+  }
+}

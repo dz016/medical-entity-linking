@@ -1,0 +1,8 @@
+{
+  "model_name": "word2vec_umls",
+  "model_type": "word2vec_umls",
+  "vector_dim": 300,
+  "projection_dim": 256,
+  "use_projection_at_inference": true,
+  "inference_mode": "projected"
+}

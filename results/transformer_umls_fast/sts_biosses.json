@@ -1,0 +1,12 @@
+{
+  "model": "transformer_umls_fast",
+  "dataset": "biosses",
+  "split": "test",
+  "pearson_r": 0.4729,
+  "pearson_p": 0.0352,
+  "spearman_r": 0.376,
+  "spearman_p": 0.1023,
+  "num_pairs": 20,
+  "runtime_sec": 0.0,
+  "date": "2026-04-24"
+}

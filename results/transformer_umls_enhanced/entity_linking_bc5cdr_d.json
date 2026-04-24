@@ -1,0 +1,14 @@
+{
+  "model": "transformer_umls_enhanced",
+  "dataset": "bc5cdr_d",
+  "split": "test",
+  "acc@1": 0.490498546836575,
+  "acc@5": 0.6188240554437737,
+  "acc@10": 0.666219539458976,
+  "mrr": 0.5437361381694044,
+  "total_mentions": 4473,
+  "found_in_top_k": 2980,
+  "not_found": 1493,
+  "runtime_sec": 4.06,
+  "date": "2026-04-24"
+}

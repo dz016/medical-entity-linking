@@ -1,0 +1,19 @@
+{
+  "model": "transformer_fast",
+  "dataset": "nli4ct",
+  "classifier": "MLP(512,128)",
+  "accuracy": 0.5548,
+  "majority_baseline": 0.579,
+  "improvement": -0.0242,
+  "per_class_f1": {
+    "Contradiction": 0.6584,
+    "Entailment": 0.3609
+  },
+  "macro_f1": 0.5097,
+  "num_train": 3466,
+  "num_test": 867,
+  "embedding_dim": 128,
+  "feature_dim": 512,
+  "runtime_sec": 1.26,
+  "date": "2026-04-24"
+}

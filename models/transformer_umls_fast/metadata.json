@@ -1,0 +1,17 @@
+{
+  "model_name": "transformer_umls_fast",
+  "model_type": "transformer_umls",
+  "model_config": {
+    "hidden_size": 128,
+    "num_layers": 2,
+    "num_heads": 4,
+    "ffn_dim": 256,
+    "dropout": 0.1,
+    "max_length": 32,
+    "pooling": "cls",
+    "mask_probability": 0.15
+  },
+  "projection_dim": 256,
+  "pooling": "cls",
+  "use_projection_at_inference": true
+}

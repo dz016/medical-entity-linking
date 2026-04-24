@@ -21,6 +21,7 @@ Usage:
 
 import json
 import argparse
+import importlib.util
 from pathlib import Path
 from datetime import date
 import sys
@@ -32,6 +33,22 @@ import pandas as pd
 
 ROOT        = Path(__file__).parent.parent
 RESULTS_DIR = ROOT / 'results'
+
+
+# ─── team-model loader ────────────────────────────────────────────────────────
+# every team model ships as `models/<name>/model.py`. If we imported them as
+# plain `from model import X` with sys.path manipulation, Python would cache
+# the first-loaded `model` module under sys.modules['model'] and reuse it for
+# subsequent loads — a trap for anyone trying to load multiple team models in
+# one process. `_import_team_model` loads each one under a unique name.
+
+def _import_team_model(model_dir: Path, class_name: str):
+    module_name = f'team_model_{model_dir.name}'
+    spec = importlib.util.spec_from_file_location(module_name, model_dir / 'model.py')
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return getattr(module, class_name)
 
 
 # ─── embedder registry ────────────────────────────────────────────────────────
@@ -68,36 +85,54 @@ def load_embedder(model_name: str):
         embedder._name = 'minilm'
         return embedder
 
-    # ── team models — uncomment as they are pushed ──
+    # ── team models ──
     elif model_name == 'word2vec':
-        sys.path.insert(0, str(ROOT / 'models' / 'word2vec'))
-        from model import Word2VecEmbedder
-        embedder = Word2VecEmbedder()
-        embedder.load(str(ROOT / 'models' / 'word2vec'))
+        model_dir = ROOT / 'models' / 'word2vec'
+        Cls = _import_team_model(model_dir, 'Word2VecEmbedder')
+        embedder = Cls()
+        embedder.load(str(model_dir))
+        embedder._name = 'word2vec'
         return embedder
-    
-
-
 
     elif model_name == 'word2vec_umls':
-        sys.path.insert(0, str(ROOT / 'models' / 'word2vec_umls'))
-        from model import Word2VecEmbedder
-        embedder = Word2VecEmbedder()
-        embedder.load(str(ROOT / 'models' / 'word2vec_umls'))
+        model_dir = ROOT / 'models' / 'word2vec_umls'
+        Cls = _import_team_model(model_dir, 'Word2VecUMLSEmbedder')
+        embedder = Cls()
+        embedder.load(str(model_dir))
+        embedder._name = 'word2vec_umls'
         return embedder
 
+    elif model_name == 'word2vec_umls_enhanced':
+        model_dir = ROOT / 'models' / 'word2vec_umls_enhanced'
+        Cls = _import_team_model(model_dir, 'Word2VecUMLSEmbedder')
+        embedder = Cls()
+        embedder.load(str(model_dir))
+        embedder._name = 'word2vec_umls_enhanced'
+        return embedder
 
-    # elif model_name == 'transformer':
-    #     from transformer_embedder import TransformerEmbedder
-    #     embedder = TransformerEmbedder()
-    #     embedder.load(str(ROOT / 'models' / 'transformer' / 'weights'))
-    #     return embedder
+    elif model_name == 'transformer_fast':
+        model_dir = ROOT / 'models' / 'transformer_fast'
+        Cls = _import_team_model(model_dir, 'TransformerEmbedder')
+        embedder = Cls()
+        embedder.load(str(model_dir))
+        embedder._name = 'transformer_fast'
+        return embedder
 
-    # elif model_name == 'transformer_umls':
-    #     from transformer_umls_embedder import TransformerUMLSEmbedder
-    #     embedder = TransformerUMLSEmbedder()
-    #     embedder.load(str(ROOT / 'models' / 'transformer_umls' / 'weights'))
-    #     return embedder
+    elif model_name == 'transformer_umls_fast':
+        model_dir = ROOT / 'models' / 'transformer_umls_fast'
+        Cls = _import_team_model(model_dir, 'TransformerUMLSEmbedder')
+        embedder = Cls()
+        embedder.load(str(model_dir))
+        embedder._name = 'transformer_umls_fast'
+        return embedder
+
+    elif model_name == 'transformer_umls_enhanced':
+        model_dir = ROOT / 'models' / 'transformer_umls_enhanced'
+        Cls = _import_team_model(model_dir, 'TransformerUMLSEmbedder')
+        embedder = Cls()
+        embedder.load(str(model_dir))
+        embedder._name = 'transformer_umls_enhanced'
+        return embedder
 
     else:
         raise ValueError(
@@ -163,7 +198,9 @@ def build_leaderboard():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', required=True,
-                        help='pubmedbert | word2vec | transformer | transformer_umls')
+                        help='pubmedbert | sapbert | biobert | minilm | '
+                             'word2vec | word2vec_umls | word2vec_umls_enhanced | '
+                             'transformer_fast | transformer_umls_fast | transformer_umls_enhanced')
     parser.add_argument('--task',  default='all',
                         help='all | entity_linking | sts | nli  (default: all)')
     parser.add_argument('--batch_size', type=int, default=32)

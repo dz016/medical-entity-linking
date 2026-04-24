@@ -1,0 +1,19 @@
+{
+  "model": "transformer_umls_enhanced",
+  "dataset": "nli4ct",
+  "classifier": "MLP(512,128)",
+  "accuracy": 0.519,
+  "majority_baseline": 0.579,
+  "improvement": -0.06,
+  "per_class_f1": {
+    "Contradiction": 0.604,
+    "Entailment": 0.3877
+  },
+  "macro_f1": 0.4958,
+  "num_train": 3466,
+  "num_test": 867,
+  "embedding_dim": 256,
+  "feature_dim": 1024,
+  "runtime_sec": 1.61,
+  "date": "2026-04-24"
+}
