@@ -1,19 +1,19 @@
 {
   "model": "word2vec",
   "dataset": "nli4ct",
-  "classifier": "MLP(512,128)",
-  "accuracy": 0.4925,
-  "majority_baseline": 0.579,
-  "improvement": -0.0865,
+  "classifier": "MLP(1024,512,256,128)+cosine",
+  "accuracy": 0.5534,
+  "majority_baseline": 0.5786,
+  "improvement": -0.0253,
   "per_class_f1": {
-    "Contradiction": 0.6022,
-    "Entailment": 0.2994
+    "Contradiction": 0.6915,
+    "Entailment": 0.1913
   },
-  "macro_f1": 0.4508,
-  "num_train": 3466,
-  "num_test": 867,
+  "macro_f1": 0.4414,
+  "num_train": 3482,
+  "num_test": 871,
   "embedding_dim": 300,
-  "feature_dim": 1200,
-  "runtime_sec": 1.81,
-  "date": "2026-04-24"
+  "feature_dim": 1201,
+  "runtime_sec": 5.58,
+  "date": "2026-04-26"
 }

@@ -1,0 +1,26 @@
+{
+  "run_name": "transformer_umls_fast",
+  "seed": 42,
+  "data": {
+    "pairs_txt": "training/data/umls_pairs.txt",
+    "umls_mrconso": "META/MRCONSO.RRF"
+  },
+  "trainer": {
+    "epochs": 10,
+    "batch_size": 256,
+    "lr": 0.0003,
+    "checkpoint_every": 1,
+    "resume": false
+  },
+  "alignment": {
+    "base_model_type": "transformer",
+    "base_model_dir": "models/transformer_fast",
+    "temperature": 0.07,
+    "projection_dim": 256,
+    "freeze_base": false,
+    "save_projected_inference": true
+  },
+  "output": {
+    "root": "models/transformer_umls_fast"
+  }
+}

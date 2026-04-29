@@ -103,16 +103,16 @@ def build_features(emb_a: np.ndarray, emb_b: np.ndarray) -> np.ndarray:
     """
     Build NLI feature vector from two embeddings.
 
-    Args:
-        emb_a : (N, dim) embeddings of sentence1
-        emb_b : (N, dim) embeddings of sentence2
-
-    Returns:
-        (N, 4*dim) feature matrix [A, B, A-B, A*B]
+    Returns (N, 4*dim + 1): [A, B, A-B, A*B, cosine(A,B)]
+    The extra scalar cosine similarity gives the classifier a direct
+    proximity signal that is otherwise buried inside 4*dim dimensions.
     """
+    norm_a  = emb_a / (np.linalg.norm(emb_a, axis=1, keepdims=True) + 1e-9)
+    norm_b  = emb_b / (np.linalg.norm(emb_b, axis=1, keepdims=True) + 1e-9)
+    cos_sim = np.sum(norm_a * norm_b, axis=1, keepdims=True)
     diff    = emb_a - emb_b
     product = emb_a * emb_b
-    return np.hstack([emb_a, emb_b, diff, product])
+    return np.hstack([emb_a, emb_b, diff, product, cos_sim])
 
 
 # ─── main evaluation function ─────────────────────────────────────────────────
@@ -122,7 +122,7 @@ def evaluate(
     dataset     : str  = 'nli4ct',
     batch_size  : int  = 32,
     save_figures: bool = True,
-    max_iter    : int  = 200
+    max_iter    : int  = 500
 ):
     """
     Run NLI evaluation for one model.
@@ -202,13 +202,17 @@ def evaluate(
     clf = Pipeline([
         ('scaler', StandardScaler()),
         ('mlp', MLPClassifier(
-            hidden_layer_sizes=(512, 128),
+            hidden_layer_sizes=(1024, 512, 256, 128),
             activation='relu',
+            solver='adam',
+            alpha=1e-4,
+            learning_rate='adaptive',
+            learning_rate_init=1e-3,
             max_iter=max_iter,
             random_state=42,
             early_stopping=True,
-            validation_fraction=0.1,
-            n_iter_no_change=10,
+            validation_fraction=0.05,
+            n_iter_no_change=25,
             verbose=False
         ))
     ])
@@ -235,7 +239,7 @@ def evaluate(
     result = {
         'model'            : embedder.name,
         'dataset'          : dataset,
-        'classifier'       : 'MLP(512,128)',
+        'classifier'       : 'MLP(1024,512,256,128)+cosine',
         'accuracy'         : round(float(accuracy), 4),
         'majority_baseline': round(float(majority_acc), 4),
         'improvement'      : round(float(accuracy - majority_acc), 4),
@@ -332,7 +336,7 @@ if __name__ == '__main__':
     parser.add_argument('--dataset',    default='nli4ct',
                         help='nli4ct (default: nli4ct)')
     parser.add_argument('--batch_size', type=int, default=32)
-    parser.add_argument('--max_iter',   type=int, default=200)
+    parser.add_argument('--max_iter',   type=int, default=500)
     args = parser.parse_args()
 
     ROOT_CLI = Path(__file__).parent.parent

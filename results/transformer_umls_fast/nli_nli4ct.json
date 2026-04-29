@@ -1,19 +1,19 @@
 {
   "model": "transformer_umls_fast",
   "dataset": "nli4ct",
-  "classifier": "MLP(512,128)",
-  "accuracy": 0.5548,
-  "majority_baseline": 0.579,
-  "improvement": -0.0242,
+  "classifier": "MLP(1024,512,256,128)+cosine",
+  "accuracy": 0.5431,
+  "majority_baseline": 0.5786,
+  "improvement": -0.0356,
   "per_class_f1": {
-    "Contradiction": 0.6446,
-    "Entailment": 0.4043
+    "Contradiction": 0.6754,
+    "Entailment": 0.2287
   },
-  "macro_f1": 0.5244,
-  "num_train": 3466,
-  "num_test": 867,
+  "macro_f1": 0.452,
+  "num_train": 3482,
+  "num_test": 871,
   "embedding_dim": 256,
-  "feature_dim": 1024,
-  "runtime_sec": 1.52,
-  "date": "2026-04-24"
+  "feature_dim": 1025,
+  "runtime_sec": 5.73,
+  "date": "2026-04-26"
 }
